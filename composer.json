@@ -8,6 +8,16 @@
             "email" : "tom@runmybusiness.com"
         }
     ],
+    "autoload" : {
+        "psr-4" : {
+            "RunMyBusiness\\Pardot\\" : "src/"
+        }
+    },
+    "autoload-dev" : {
+        "psr-4" : {
+            "RunMyBusiness\\Pardot\\Tests\\" : "tests/"
+        }
+    },
     "require" : {
         "php" : ">=7.1",
         "guzzlehttp/guzzle" : "~6.0",
