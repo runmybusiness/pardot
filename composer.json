@@ -1,0 +1,19 @@
+{
+    "name" : "runmybusiness/pardot",
+    "type" : "library",
+    "license" : "MIT",
+    "authors" : [
+        {
+            "name" : "Tom Schlick",
+            "email" : "tom@runmybusiness.com"
+        }
+    ],
+    "require" : {
+        "php" : ">=7.1",
+        "guzzlehttp/guzzle" : "~6.0",
+        "tightenco/collect" : "~5.4"
+    },
+    "require-dev" : {
+        "phpunit/phpunit" : "^6.0"
+    }
+}
