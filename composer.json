@@ -1,5 +1,6 @@
 {
     "name" : "runmybusiness/pardot",
+    "description" : "A modern PHP API client for Pardot.com",
     "type" : "library",
     "license" : "MIT",
     "authors" : [
