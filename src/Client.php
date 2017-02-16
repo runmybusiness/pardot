@@ -6,9 +6,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\Support\Collection;
 
 /**
- * Class Client
- *
- * @package RunMyBusiness\Pardot
+ * Class Client.
  */
 class Client
 {
@@ -182,6 +180,7 @@ class Client
     protected function makeGetRequest(string $url) : array
     {
         $result = $this->connection->get($url);
+
         return json_decode($result->getBody()->getContents(), true);
     }
 
@@ -226,19 +225,19 @@ class Client
     {
         $uri = "/{$objectType}/version/4";
 
-        if ( ! empty($operation)) {
+        if (!empty($operation)) {
             $uri .= "/do/{$operation}";
         }
 
-        if ( ! empty($attr['id'])) {
+        if (!empty($attr['id'])) {
             $uri .= "/id/{$attr['id']}";
             unset($attr['id']);
         }
 
-        if ( ! empty($attr)) {
-            $uri .= "?" . http_build_query($attr);
+        if (!empty($attr)) {
+            $uri .= '?'.http_build_query($attr);
         }
 
-        return $this->config['base_uri'] . $uri;
+        return $this->config['base_uri'].$uri;
     }
 }
