@@ -192,7 +192,7 @@ class Client
      */
     protected function makePostRequest(string $url, array $fields = []) : array
     {
-        $result = $this->connection->request('POST', $url, [
+        $result = $this->connection->post($url, [
             'form_params' => $fields,
         ]);
 
