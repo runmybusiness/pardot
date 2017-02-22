@@ -118,7 +118,7 @@ class Client
         return array_get($this->makePostRequest(
             $this->makeUri($objectType, 'create', $this->makeFields($options)),
             $payload
-        ), $objectType);
+        ), $objectType, []);
     }
 
     /**
@@ -136,7 +136,7 @@ class Client
         return array_get($this->makePostRequest(
             $this->makeUri($objectType, 'update', $options),
             $this->makeFields($payload)
-        ), $objectType);
+        ), $objectType, []);
     }
 
     /**
@@ -154,7 +154,7 @@ class Client
         return array_get($this->makePostRequest(
             $this->makeUri($objectType, 'upsert', $options),
             $this->makeFields($payload)
-        ), $objectType);
+        ), $objectType, []);
     }
 
     /**
@@ -197,7 +197,7 @@ class Client
     {
         $result = $this->connection->get($url);
 
-        return json_decode($result->getBody()->getContents(), true);
+        return (array) json_decode($result->getBody()->getContents(), true);
     }
 
     /**
@@ -212,7 +212,7 @@ class Client
             'form_params' => $fields,
         ]);
 
-        return json_decode($result->getBody()->getContents(), true);
+        return (array) json_decode($result->getBody()->getContents(), true);
     }
 
     /**
