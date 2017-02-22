@@ -167,7 +167,7 @@ class Client
     {
         $results = array_get($this->makeGetRequest(
             $this->makeUri($objectType, 'query', $this->makeFields($options))
-        ), "result." . snake_case($objectType), []);
+        ), 'result.'.snake_case($objectType), []);
 
         return collect($results);
     }
@@ -253,19 +253,19 @@ class Client
     {
         $uri = "/{$objectType}/version/4";
 
-        if ( ! empty($operation)) {
+        if (!empty($operation)) {
             $uri .= "/do/{$operation}";
         }
 
-        if ( ! empty($attr['id'])) {
+        if (!empty($attr['id'])) {
             $uri .= "/id/{$attr['id']}";
             unset($attr['id']);
         }
 
-        if ( ! empty($attr)) {
-            $uri .= '?' . http_build_query($attr);
+        if (!empty($attr)) {
+            $uri .= '?'.http_build_query($attr);
         }
 
-        return $this->config['base_uri'] . $uri;
+        return $this->config['base_uri'].$uri;
     }
 }
