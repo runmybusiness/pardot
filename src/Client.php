@@ -173,6 +173,22 @@ class Client
     }
 
     /**
+     * @param string $objectType
+     * @param int    $id
+     * @param array  $options
+     *
+     * @return bool
+     */
+    public function delete(string $objectType, int $id, array $options = []) : bool
+    {
+        $options['id'] = $id;
+
+        return $this->makeDeleteRequest(
+            $this->makeUri($objectType, 'delete', $this->makeFields($options))
+        );
+    }
+
+    /**
      * @param string $url
      *
      * @return array
@@ -197,6 +213,18 @@ class Client
         ]);
 
         return json_decode($result->getBody()->getContents(), true);
+    }
+
+    /**
+     * @param string $url
+     *
+     * @return bool
+     */
+    protected function makeDeleteRequest(string $url) : bool
+    {
+        $result = $this->connection->delete($url);
+
+        return $result->getStatusCode() == 204;
     }
 
     /**
